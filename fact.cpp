@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 500
+
 
 int multiply(int x, int res[], int res_size);
 
 void factorial(int n)
 {
-	int res[MAX];
+	int res[100];
 
 	// Initialize result
 	res[0] = 1;
@@ -51,5 +51,6 @@ int main()
 	factorial(n);
         }else{
             cout<<"INVALID";
+    }
 	return 0;
 }
