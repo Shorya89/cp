@@ -1,23 +1,55 @@
 #include <iostream>
 using namespace std;
 
-long long fact(long long n){
-    if(n == 1){
-        return 1;
-    }
+#define MAX 500
 
-    return n * fact(n-1);
+int multiply(int x, int res[], int res_size);
+
+void factorial(int n)
+{
+	int res[MAX];
+
+	// Initialize result
+	res[0] = 1;
+	int res_size = 1;
+
+	for (int x = 2; x <= n; x++)
+		res_size = multiply(x, res, res_size);
+
+	cout << "Factorial of given number is \n";
+	for (int i = res_size - 1; i >= 0; i--)
+		cout << res[i];
 }
 
-int main(){
+
+int multiply(int x, int res[], int res_size)
+{
+	int carry = 0; 
+
+	for (int i = 0; i < res_size; i++) {
+		int prod = res[i] * x + carry;
+
+		res[i] = prod % 10;
+
+		carry = prod / 10;
+	}
+
+	while (carry) {
+		res[res_size] = carry % 10;
+		carry = carry / 10;
+		res_size++;
+	}
+	return res_size;
+}
+]
+int main()
+{
     long long n;
     cin >> n;
-
     if(n > 100){
-        cout << fact(n);
-    }else{
-        cout << "INVALID";
-    }
-
-    return 0;
+            
+	factorial(n);
+        }else{
+            cout<<"INVALID";
+	return 0;
 }
